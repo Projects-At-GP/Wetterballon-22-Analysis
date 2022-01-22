@@ -1,3 +1,9 @@
+# Basic
+
+```bash
+python -m Wetterballon_22_Analysis ARGUMENTS
+```
+
 ## Arguments
 
 - [required](#required)
