@@ -1,6 +1,6 @@
 import argparse
 
-from Wetterballon_22_Analysis import plot
+from Wetterballon_22_Analysis import plot, get_bool
 
 
 parser = argparse.ArgumentParser()
@@ -17,20 +17,28 @@ parser.add_argument(
     "-o",
     "--out",
     help="The path for the output-file.",
-    type=argparse.FileType(mode="w", encoding="utf-8"),
+    type=str,
     dest="out",
     default="out",
 )
 parser.add_argument(
-    "-m",
-    "--mode",
-    help="The mode to process the data.",
-    dest="mode",
-    default="plot",
-    choices=["plot"],
+    "-e",
+    "--epoch",
+    help="The epoch for the timestamps. ('ll be added to them)",
+    type=float,
+    dest="epoch",
+    default=0,
 )
 parser.add_argument(
-    "-ml",
+    "-ef",
+    "--epoch-file",
+    help="The epoch-file for the timestamps. ('ll be added to them)",
+    type=str,
+    dest="epoch_file",
+    default=None,
+)
+parser.add_argument(
+    "-m",
     "--median-label",
     help="The label for the median.",
     type=str,
@@ -81,6 +89,14 @@ parser.add_argument(
     choices=["1", "2", "3", "4", "+", "x", "|", "_", "o", "*"],
 )
 parser.add_argument(
+    "-ms",
+    "--maker-size",
+    help="The size for the marker.",
+    type=float,
+    dest="markersize",
+    default=None,
+)
+parser.add_argument(
     "-or",
     "--order",
     help="The order for the regression.",
@@ -96,6 +112,14 @@ parser.add_argument(
     dest="dpi",
     default=None,
 )
+parser.add_argument(
+    "-g",
+    "--grid",
+    help="Whether a grid should be visible in the plot or not.",
+    type=get_bool,
+    dest="grid",
+    default=True,
+)
 
 
 args: argparse.Namespace = parser.parse_args()
@@ -109,16 +133,27 @@ for arg in args.__dict__:
 print(f"\033[36m{40*'*'}\033[0m\n")
 
 
-if args.mode == "plot":
-    plot(
-        file=args.file,
-        out=args.out,
-        median_label=args.mlabel,
-        x_label=args.xlabel,
-        y_label=args.ylabel,
-        x_scale=args.xscale,
-        y_scale=args.yscale,
-        marker=args.marker,
-        order=args.order,
-        dpi=args.dpi,
-    )
+if args.epoch != 0 and args.epoch_file is not None:
+    raise AttributeError("epoch and epoch-file cannot be set both!")
+elif args.epoch_file:
+    with open(args.epoch_file) as f:
+        epoch = float(f.read())
+else:
+    epoch = args.epoch
+
+
+plot(
+    file=args.file,
+    out=args.out,
+    median_label=args.mlabel,
+    x_label=args.xlabel,
+    y_label=args.ylabel,
+    x_scale=args.xscale,
+    y_scale=args.yscale,
+    marker=args.marker,
+    marker_size=args.markersize,
+    order=args.order,
+    dpi=args.dpi,
+    grid=args.grid,
+    epoch=epoch,
+)
