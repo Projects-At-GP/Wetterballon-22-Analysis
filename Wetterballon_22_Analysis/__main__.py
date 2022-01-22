@@ -14,6 +14,14 @@ parser.add_argument(
     required=True,
 )
 parser.add_argument(
+    "-o",
+    "--out",
+    help="The path for the output-file.",
+    type=argparse.FileType(mode="w", encoding="utf-8"),
+    dest="out",
+    default="out",
+)
+parser.add_argument(
     "-m",
     "--mode",
     help="The mode to process the data.",
@@ -29,4 +37,4 @@ args: argparse.Namespace = parser.parse_args()
 print(args)
 
 if args.mode == "plot":
-    plot(file=args.file)
+    plot(file=args.file, out=args.out)
