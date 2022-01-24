@@ -11,7 +11,7 @@ __all__ = ("plot",)
 def plot(
     file: TextIOWrapper,
     out: str,
-    median_label: str,
+    d_label: str,
     x_label: str,
     y_label: str,
     x_scale: str,
@@ -49,7 +49,7 @@ def plot(
     sns.regplot(
         x=t,
         y=v,
-        label=median_label.title(),
+        label=d_label.title(),
         marker=marker,
         order=order,
         line_kws={"color": "red"},

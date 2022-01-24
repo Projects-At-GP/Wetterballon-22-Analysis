@@ -24,11 +24,11 @@ shows the help message
 The path to the source-file.
 
 ---
-> -m LABEL, --median-label LABEL
+> -d LABEL, --data-label LABEL
 
 * type: str
 
-The label for the median.
+The label for the data.
 
 ---
 
@@ -97,14 +97,14 @@ The marker for the plot.
 The size for the marker.
 
 ---
-> -or ORDER, --order ORDER
+> --order ORDER
 
 * type: int
 
 The order for the regression.
 
 ---
-> -d DPI, --dpi DPI
+> --dpi DPI
 
 * type: int
 

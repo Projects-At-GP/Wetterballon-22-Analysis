@@ -38,11 +38,11 @@ parser.add_argument(
     default=None,
 )
 parser.add_argument(
-    "-m",
-    "--median-label",
-    help="The label for the median.",
+    "-d",
+    "--data-label",
+    help="The label for the data.",
     type=str,
-    dest="mlabel",
+    dest="dlabel",
     required=True,
 )
 parser.add_argument(
@@ -97,7 +97,6 @@ parser.add_argument(
     default=None,
 )
 parser.add_argument(
-    "-or",
     "--order",
     help="The order for the regression.",
     type=int,
@@ -105,7 +104,6 @@ parser.add_argument(
     default=1,
 )
 parser.add_argument(
-    "-d",
     "--dpi",
     help="The DPI for the plot.",
     type=float,
@@ -145,7 +143,7 @@ else:
 plot(
     file=args.file,
     out=args.out,
-    median_label=args.mlabel,
+    d_label=args.dlabel,
     x_label=args.xlabel,
     y_label=args.ylabel,
     x_scale=args.xscale,
