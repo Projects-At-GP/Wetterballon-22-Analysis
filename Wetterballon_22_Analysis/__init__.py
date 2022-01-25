@@ -5,4 +5,5 @@ __copyright__ = f"(c) {__author__}"
 __description__ = "Code for the data analysis for out project."
 
 from .data import *
+from .utils import *
 from .visual import *

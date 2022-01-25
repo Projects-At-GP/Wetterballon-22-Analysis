@@ -1,6 +1,6 @@
 import argparse
 
-from Wetterballon_22_Analysis import plot, get_bool
+from Wetterballon_22_Analysis import plot, get_bool, print_args
 
 
 parser = argparse.ArgumentParser()
@@ -155,12 +155,7 @@ parser.add_argument(
 args: argparse.Namespace = parser.parse_args()
 
 
-print(f"\n\033[36m{40*'*'}\033[0m")
-for arg in args.__dict__:
-    print(
-        f"\033[36m* \033[32m{arg:10}\033[33m:", f"\033[34m{args.__dict__[arg]!r}\033[0m"
-    )
-print(f"\033[36m{40*'*'}\033[0m\n")
+print_args(**args.__dict__)
 
 
 if args.epoch != 0 and args.epoch_file is not None:
