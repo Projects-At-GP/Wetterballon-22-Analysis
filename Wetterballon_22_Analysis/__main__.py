@@ -80,7 +80,7 @@ parser.add_argument(
     choices=["linear", "log", "symlog", "logit"],
 )
 parser.add_argument(
-    "-mk",
+    "-m",
     "--marker",
     help="The marker for the plot.",
     type=str,

@@ -83,7 +83,7 @@ The scale for the y-axis.
 The scale for the x-axis.
 
 ---
-> -mk MARKER, --marker MARKER
+> -m MARKER, --marker MARKER
 
 * type: {1,2,3,4,+,x,|,\_,o,\*}
 
