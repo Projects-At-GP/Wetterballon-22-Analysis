@@ -18,6 +18,10 @@ def plot(
     y_scale: str,
     marker: str,
     marker_size: float,
+    marker_width: float,
+    marker_color: str,
+    line_width: float,
+    line_color: str,
     order: int,
     dpi: float,
     grid: bool,
@@ -51,9 +55,10 @@ def plot(
         y=v,
         label=d_label.title(),
         marker=marker,
+        color=marker_color,
         order=order,
-        line_kws={"color": "red"},
-        scatter_kws={"s": marker_size},
+        line_kws={"color": line_color, "lw": line_width},
+        scatter_kws={"s": marker_size, "lw": marker_width},
     )
     plt.legend()
     if grid:

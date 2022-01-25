@@ -90,11 +90,39 @@ The scale for the x-axis.
 The marker for the plot.
 
 ---
-> -ms SIZE, --maker-size SIZE
+> -ms SIZE, --marker-size SIZE
 
 * type: float
 
 The size for the marker.
+
+---
+> -mw WIDTH, --marker-width WIDTH
+
+* type: float
+
+The width for the marker.
+
+---
+> -mc COLOR, --marker-color COLOR
+
+* type: str
+
+The color for the marker.
+
+---
+> -lw WIDTH, --line-width WIDTH
+
+* type: float
+
+The line for the line.
+
+---
+> -lc COLOR, --line-color COLOR
+
+* type: str
+
+The color for the line.
 
 ---
 > --order ORDER

@@ -97,6 +97,38 @@ parser.add_argument(
     default=None,
 )
 parser.add_argument(
+    "-mw",
+    "--maker-width",
+    help="The width for the marker.",
+    type=float,
+    dest="markerwidth",
+    default=None,
+)
+parser.add_argument(
+    "-mc",
+    "--maker-color",
+    help="The color for the marker.",
+    type=str,
+    dest="markercolor",
+    default="blue",
+)
+parser.add_argument(
+    "-lw",
+    "--line-width",
+    help="The width for the line.",
+    type=float,
+    dest="linewidth",
+    default=None,
+)
+parser.add_argument(
+    "-lc",
+    "--line-color",
+    help="The color for the line.",
+    type=str,
+    dest="linecolor",
+    default="red",
+)
+parser.add_argument(
     "--order",
     help="The order for the regression.",
     type=int,
@@ -150,6 +182,10 @@ plot(
     y_scale=args.yscale,
     marker=args.marker,
     marker_size=args.markersize,
+    marker_width=args.markerwidth,
+    marker_color=args.markercolor,
+    line_width=args.linewidth,
+    line_color=args.linecolor,
     order=args.order,
     dpi=args.dpi,
     grid=args.grid,
