@@ -83,6 +83,17 @@ The scale for the y-axis.
 The scale for the x-axis.
 
 ---
+> -r RELATIONAL, --relational RELATIONAL
+* tpye: bool
+
+Whether multiple columns from csv should be plotted or not.
+
+Notes:
+* This will ignore every color-argument.
+* Plotted values may be on the same height (Y), but don't have to share the same value since the are distributed between their min and max.
+  Example: max(A) = 200, min(A) = 100; The marker in the middle will have the value 150.
+
+---
 > -m MARKER, --marker MARKER
 
 * type: {1,2,3,4,+,x,|,\_,o,\*}
