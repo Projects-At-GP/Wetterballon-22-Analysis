@@ -80,6 +80,14 @@ parser.add_argument(
     choices=["linear", "log", "symlog", "logit"],
 )
 parser.add_argument(
+    "-r",
+    "--relational",
+    help="Plots multiple columns from csv. NOTE: THIS IGNORES EVERY color-ARGUMENT!",
+    type=get_bool,
+    dest="relational",
+    default=False,
+)
+parser.add_argument(
     "-m",
     "--marker",
     help="The marker for the plot.",
