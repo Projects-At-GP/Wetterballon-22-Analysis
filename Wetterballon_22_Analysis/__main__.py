@@ -183,6 +183,7 @@ plot(
     y_label=args.ylabel,
     x_scale=args.xscale,
     y_scale=args.yscale,
+    relational=args.relational,
     marker=args.marker,
     marker_size=args.markersize,
     marker_width=args.markerwidth,
