@@ -98,7 +98,7 @@ parser.add_argument(
 )
 parser.add_argument(
     "-ms",
-    "--maker-size",
+    "--marker-size",
     help="The size for the marker.",
     type=float,
     dest="markersize",
@@ -106,7 +106,7 @@ parser.add_argument(
 )
 parser.add_argument(
     "-mw",
-    "--maker-width",
+    "--marker-width",
     help="The width for the marker.",
     type=float,
     dest="markerwidth",
@@ -114,7 +114,7 @@ parser.add_argument(
 )
 parser.add_argument(
     "-mc",
-    "--maker-color",
+    "--marker-color",
     help="The color for the marker.",
     type=str,
     dest="markercolor",
