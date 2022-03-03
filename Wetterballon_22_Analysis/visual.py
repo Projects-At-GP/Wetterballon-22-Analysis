@@ -16,6 +16,7 @@ def plot(
     y_label: str,
     x_scale: str,
     y_scale: str,
+    relational: bool,
     marker: str,
     marker_size: float,
     marker_width: float,
@@ -35,7 +36,10 @@ def plot(
         for line in f:
             res = line.removesuffix("\n").split(",")
             t.append(float(res[0]))
-            v.append(float(res[1]))
+            if not relational:
+                v.append(float(res[1]))
+            else:
+                v.append(list(map(float, res[1:])))
 
     if not out.endswith(".png"):
         out += ".png"
@@ -55,9 +59,9 @@ def plot(
         y=v,
         label=d_label.title(),
         marker=marker,
-        color=marker_color,
+        color=marker_color if not relational else None,
         order=order,
-        line_kws={"color": line_color, "lw": line_width},
+        line_kws={"color": line_color if not relational else None, "lw": line_width},
         scatter_kws={"s": marker_size, "lw": marker_width},
     )
     plt.legend()
