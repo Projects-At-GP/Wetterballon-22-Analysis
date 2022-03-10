@@ -1,4 +1,7 @@
-__all__ = ("print_args",)
+__all__ = (
+    "print_args",
+    "prepare_csv_from_STRATOFLIGHTS_LOG",
+)
 
 
 adjust_size = (
@@ -45,3 +48,11 @@ def print_args(**kwargs) -> None:
     to_print += down.format(length * "*") + "\n"
 
     print(to_print)
+
+
+def prepare_csv_from_STRATOFLIGHTS_LOG(path: str) -> None:
+    with open(path) as f:
+        print(f.readline())
+        print(f.readline())
+        for line in f.readlines():
+            print(line); exit()
