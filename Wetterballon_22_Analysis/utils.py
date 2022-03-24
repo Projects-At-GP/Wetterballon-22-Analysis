@@ -52,7 +52,9 @@ def print_args(**kwargs) -> None:
 
 def prepare_csv_from_STRATOFLIGHTS_LOG(path: str) -> None:
     with open(path) as f:
-        print(f.readline())
-        print(f.readline())
+        print(f.readline(), end="")
         for line in f.readlines():
-            print(line); exit()
+            if line.startswith("$"):
+                # every ``_`` is fairly uninteresting
+                _, up_time, utc, _, sats_in_use, lat, lon, _, speed_kmh, course, altitude, temp_board, temp_ext, hum_board, hum_ext, press_hpa, _, _ = \
+                    line.split(";")
