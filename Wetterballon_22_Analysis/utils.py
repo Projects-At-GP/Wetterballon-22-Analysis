@@ -1,3 +1,6 @@
+from pathlib import Path
+
+
 __all__ = (
     "print_args",
     "prepare_csv_from_STRATOFLIGHTS_LOG",
@@ -51,23 +54,24 @@ def print_args(**kwargs) -> None:
 
 
 def prepare_csv_from_STRATOFLIGHTS_LOG(path: str) -> None:
+    Path("data").mkdir(exist_ok=True)
     with (
-        open(path) as f,
-        open("data/1_sats_in_use.csv", "w") as f1_sats_in_use,
-        open("data/1_lat.csv", "w") as f1_lat,
-        open("data/1_lon.csv", "w") as f1_lon,
-        open("data/2_lat_lon.csv", "w") as f2_lat_lon,
-        open("data/1_speed.csv", "w") as f1_speed,
-        open("data/1_course.csv", "w") as f1_course,
-        open("data/1_altitude.csv", "w") as f1_altitude,
-        open("data/1_temp_board.csv", "w") as f1_temp_board,
-        open("data/1_temp_ext.csv", "w") as f1_temp_ext,
-        open("data/2_temp_board_ext.csv", "w") as f2_temp_board_ext,
-        open("data/1_hum_board.csv", "w") as f1_hum_board,
-        open("data/1_hum_ext.csv", "w") as f1_hum_ext,
-        open("data/2_hum_board_ext.csv", "w") as f2_hum_board_ext,
-        open("data/1_press.csv", "w") as f1_press,
-        open("data/2_altitude_press.csv", "w") as f2_altitude_press,
+        open(Path(path)) as f,
+        open(Path("data/1_sats_in_use.csv"), "w") as f1_sats_in_use,
+        open(Path("data/1_lat.csv"), "w") as f1_lat,
+        open(Path("data/1_lon.csv"), "w") as f1_lon,
+        open(Path("data/2_lat_lon.csv"), "w") as f2_lat_lon,
+        open(Path("data/1_speed.csv"), "w") as f1_speed,
+        open(Path("data/1_course.csv"), "w") as f1_course,
+        open(Path("data/1_altitude.csv"), "w") as f1_altitude,
+        open(Path("data/1_temp_board.csv"), "w") as f1_temp_board,
+        open(Path("data/1_temp_ext.csv"), "w") as f1_temp_ext,
+        open(Path("data/2_temp_board_ext.csv"), "w") as f2_temp_board_ext,
+        open(Path("data/1_hum_board.csv"), "w") as f1_hum_board,
+        open(Path("data/1_hum_ext.csv"), "w") as f1_hum_ext,
+        open(Path("data/2_hum_board_ext.csv"), "w") as f2_hum_board_ext,
+        open(Path("data/1_press.csv"), "w") as f1_press,
+        open(Path("data/2_altitude_press.csv"), "w") as f2_altitude_press,
     ):
         print(f.readline(), end="")
         for line in f.readlines():
