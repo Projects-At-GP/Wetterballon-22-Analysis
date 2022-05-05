@@ -56,6 +56,7 @@ def print_args(**kwargs) -> None:
 def prepare_csv_from_STRATOFLIGHTS_LOG(path: str) -> None:
     p1 = "{},{}"
     p2 = "{},{},{}"
+
     Path("data").mkdir(exist_ok=True)
     with (
         open(Path(path)) as f,
@@ -75,9 +76,7 @@ def prepare_csv_from_STRATOFLIGHTS_LOG(path: str) -> None:
         open(Path("data/1_press_hpa.csv"), "w") as f1_press_hpa,
         open(Path("data/2_altitude_press.csv"), "w") as f2_altitude_press,
     ):
-        print(f.readline(), end="")
-
-        print("up_time,stats_in_use", file=f1_sats_in_use)
+        print("up_time,sats_in_use", file=f1_sats_in_use)
         print("up_time,lat", file=f1_lat)
         print("up_time,lon", file=f1_lon)
         print("up_time,lat,lon", file=f2_lat_lon)
@@ -93,6 +92,7 @@ def prepare_csv_from_STRATOFLIGHTS_LOG(path: str) -> None:
         print("up_time,press_hpa", file=f1_press_hpa)
         print("up_time,altitude_nn,press_hpa", file=f2_altitude_press)
 
+        print(f.readline(), end="")
         for line in f.readlines():
             if line.startswith("$"):
                 # every ``_`` is fairly uninteresting
@@ -101,7 +101,7 @@ def prepare_csv_from_STRATOFLIGHTS_LOG(path: str) -> None:
             else:
                 continue
 
-            print(p1.format(up_time, stats_in_use), file=f1_sats_in_use)
+            print(p1.format(up_time, sats_in_use), file=f1_sats_in_use)
             print(p1.format(up_time, lat), file=f1_lat)
             print(p1.format(up_time, lon), file=f1_lon)
             print(p2.format(up_time, lat, lon), file=f2_lat_lon)
